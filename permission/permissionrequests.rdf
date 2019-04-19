@@ -1,0 +1,114 @@
+@prefix : <https://a-solid-web.github.io/permission-ontology/permissionrequests.rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix terms: <http://purl.org/dc/terms/>.
+
+
+<!-- Classes -->
+:Data a owl:Class ;
+    rdfs:label "Data"@en ;
+    rdfs:isDefinedBy <https://a-solid-web.github.io/permission-ontology/permissionrequests.rdf/> .
+
+:HealthData a owl:Class ;
+    rdfs:label "Health Data"@en ;
+    rdfs:comment "Describe which type of data is requested" ;
+    rdfs:isDefinedBy <https://a-solid-web.github.io/permission-ontology/permissionrequests.rdf/> ;
+    rdfs:subClassOf :Data .
+
+:DataRequest a owl:Class ;
+    rdfs:label "Data Request"@en ;
+    rdfs:comment "specifes that the Notification is a Data Request" ;
+    rdfs:isDefinedBy <https://a-solid-web.github.io/permission-ontology/permissionrequests.rdf/> .
+
+:Description a owl:Class ;
+  rdfs:label "Description"@en;
+  rdfs:isDefinedBy <https://a-solid-web.github.io/permission-ontology/permissionrequests.rdf/> .
+
+:Intent a owl:Class ;
+  rdfs:label "Intent"@en;
+  rdfs:isDefinedBy <https://a-solid-web.github.io/permission-ontology/permissionrequests.rdf/> .
+
+:DataAnalysis a owl:Class;
+  rdfs:subClassOf :Intent;
+  rdfs:label "Data Analysis"@en;
+  rdfs:comment "Data gets used for Data Analysis" ;
+  :privacyRisklevel "high"@en;
+  :financialRisklevel "low"@en;
+  :legalRisklevel "low"@en;
+  rdfs:isDefinedBy <https://a-solid-web.github.io/permission-ontology/permissionrequests.rdf/> .
+    
+:FinancialRecords a owl:Class;
+  rdfs:subClassOf :Intent;
+  rdfs:label "Finical Records"@en;
+  rdfs:comment "Data gets used tp check your Finical Records" ;
+  :privacyRisklevel "high"@en;
+  :financialRisklevel "high"@en;
+  :legalRisklevel "medium"@en;
+  rdfs:isDefinedBy <https://a-solid-web.github.io/permission-ontology/permissionrequests.rdf/> .
+
+<!-- ObjectProperties -->
+:requestFrom a owl:ObjectProperty ;
+    rdfs:label "request from"@en ;
+    rdfs:comment "Used to define the source of the request"@en ;
+    rdfs:isDefinedBy <https://a-solid-web.github.io/permission-ontology/permissionrequests.rdf/> .
+
+:requests a owl:ObjectProperty;
+    rdfs:label "request resource"@en;
+    rdfs:comment "used to request specific resource";
+    rdfs:isDefinedBy <https://a-solid-web.github.io/permission-ontology/permissionrequests.rdf/> .
+
+:hasStatus a owl:ObjectProperty;
+    rdfs:label "Status"@en;
+    rdfs:comment "shows status of request";
+    rdfs:isDefinedBy <https://a-solid-web.github.io/permission-ontology/permissionrequests.rdf/> .
+
+:wasSentOn a owl:ObjectProperty;
+    rdfs:label "was sent on ";
+    rdfs:comment "timestamp when the request got sent";
+    rdfs:isDefinedBy <https://a-solid-web.github.io/permission-ontology/permissionrequests.rdf/>;
+
+:expires a owl:ObjectProperty;
+    rdfs:label "expires";
+    rdfs:comment "timestamp when Access would expire";
+    rdfs:isDefinedBy <https://a-solid-web.github.io/permission-ontology/permissionrequests.rdf/>;
+
+:hasIntent a owl:ObjectProperty;
+    rdfs:label "has intent";
+    rdfs:comment "shows what the data will be used for";
+    rdfs:isDefinedBy <https://a-solid-web.github.io/permission-ontology/permissionrequests.rdf/>;
+
+:requestDataType a owl:ObjectProperty ;
+    rdfs:label "requested data type"@en ;
+    rdfs:comment "Used to define the type of data requested"@en ;
+    rdfs:isDefinedBy <https://a-solid-web.github.io/permission-ontology/permissionrequests.rdf/> .
+
+:riskLevel a owl:Property;
+    rdfs:label "risklevel";
+    rdfs:comment "Parent class of Risk"@en ;
+    rdfs:isDefinedBy <https://a-solid-web.github.io/permission-ontology/permissionrequests.rdf/> .
+
+:privacyRisklevel a owl:ObjectProperty ;
+    rdfs:subPropertyOf :riskLevel;
+    rdfs:label "privacy risklevel";
+    rdfs:comment "Shows the privacy risk of the asked permissions"@en ;
+    rdfs:isDefinedBy <https://a-solid-web.github.io/permission-ontology/permissionrequests.rdf/> .
+
+:financialRisklevel a owl:ObjectProperty ;
+    rdfs:subPropertyOf :riskLevel;
+    rdfs:label "finical risklevel";
+    rdfs:comment "Shows the finical risk of the asked permissions"@en ;
+    rdfs:isDefinedBy <https://a-solid-web.github.io/permission-ontology/permissionrequests.rdf/> .
+
+:legalRisklevel a owl:ObjectProperty ;
+    rdfs:subPropertyOf :riskLevel;
+    rdfs:label "legal risklevel";
+    rdfs:comment "Shows the legal risk of the asked permissions"@en ;
+    rdfs:isDefinedBy <https://a-solid-web.github.io/permission-ontology/permissionrequests.rdf/> .
+
+
+<!-- Ontology -->
+<https://a-solid-web.github.io/permission-ontology/permissionrequests.rdf/> . a owl:Ontology ;
+    rdfs:label "Ontology for pReq"@en ;
+    rdfs:comment "Ontology for pReq based on Odyssey"@en ;
+    owl:versionInfo "WiP"@en .
